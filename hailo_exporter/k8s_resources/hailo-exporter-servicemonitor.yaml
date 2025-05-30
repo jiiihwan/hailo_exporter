@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: hailo-exporter
+  namespace: monitoring
+  labels:
+    release: prometheus  # Prometheus Helm 설치 시 요구되는 라벨
+spec:
+  selector:
+    matchLabels:
+      app: hailo-exporter
+  endpoints:
+    - port: metrics
+      interval: 1s
+  namespaceSelector:
+    matchNames:
+      - monitoring
