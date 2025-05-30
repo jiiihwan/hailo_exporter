@@ -1,0 +1,2 @@
+prometheus_client==0.21.1
+protobuf==3.21.12 
