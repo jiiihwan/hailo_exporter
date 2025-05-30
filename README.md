@@ -21,8 +21,8 @@ See [prepare_for_exporter.md](https://github.com/jiiihwan/hailo_exporter/blob/ma
 
 ## 4. Build Hailo_exporter
 
-See [build_hailo_exporter.md](https://github.com/jiiihwan/hailo_exporter/blob/main/build_hailo_exporter.md)
+See [build_hailo_exporter.md](https://github.com/jiiihwan/hailo_exporter/blob/main/build_hailo_exporter.md) for more details
 
 ## 5. Automate Hailo_exporter in k8s cluster
 
-See [automate_hailo_exporter.md](https://github.com/jiiihwan/hailo_exporter/blob/main/automate_hailo_exporter.md)
+See [automate_hailo_exporter.md](https://github.com/jiiihwan/hailo_exporter/blob/main/automate_hailo_exporter.md) for more details
