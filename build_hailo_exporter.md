@@ -43,7 +43,7 @@ hailo_exporter/                   # 최상위 폴더
   - 로그 출력 담당
   - [logger.py](https://github.com/jiiihwan/hailo_exporter/blob/main/hailo_exporter/hailo_exporter/logger.py)
 
-## exporter 실험
+## exporter 실행
 - 가상환경 세팅
 ```
 # (필요시) 원래 가상환경 삭제
