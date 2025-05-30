@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: hailo-exporter
+  namespace: monitoring
+  labels:
+    app: hailo-exporter
+spec:
+  selector:
+    matchLabels:
+      app: hailo-exporter
+  template:
+    metadata:
+      labels:
+        app: hailo-exporter
+    spec:
+      nodeSelector:
+        device: rpi
+      containers:
+        - name: hailo-exporter
+          image: yjh2353693/hailo-exporter:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9101
+              name: metrics
+          volumeMounts:
+            - name: hmon-volume
+              mountPath: /tmp/hmon_files
+              readOnly: true
+      volumes:
+        - name: hmon-volume
+          hostPath:
+            path: /tmp/hmon_files
+            type: Directory
