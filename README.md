@@ -5,13 +5,11 @@
 - exporter module architecture is based on [jetson-exporter](https://github.com/laminair/jetson_stats_node_exporter)
 
 ## 1. Raspberry pi 5 k8s installation
-- The installation was performed on Raspberry Pi OS
+The installation was performed on Raspberry Pi OS
 
 See [rpi_installation.md](https://github.com/jiiihwan/hailo_exporter/blob/main/rpi_installation.md) for more details
 
 ## 2. Understanding monitoring with hailo example 
-- Using https://github.com/hailo-ai/hailo-rpi5-examples
-- https://datarootlabs.com/blog/hailo-ai-kit-raspberry-pi-5-setup-and-computer-vision-pipelines
 
 See [monitoring_example.md](https://github.com/jiiihwan/hailo_exporter/blob/main/monitoring_example.md) for more details
 
