@@ -42,3 +42,30 @@ hailo_exporter/                   # 최상위 폴더
 - ### `logger.py `
   - 로그 출력 담당
   - [logger.py](https://github.com/jiiihwan/hailo_exporter/blob/main/hailo_exporter/hailo_exporter/logger.py)
+
+## exporter 실험
+- 가상환경 세팅
+```
+# (필요시) 원래 가상환경 삭제
+deactivate
+rm -rf venv
+
+sudo apt update
+sudo apt install python3-venv python3-pip
+
+#가상환경 생성 및 활성화
+python3 -m venv venv
+source venv/bin/activate
+
+#pip 업그레이드!
+python -m pip install --upgrade pip
+
+#필요 패키지 설치
+pip install -r requirements.txt
+```
+
+- exporter 모듈 실행해보기    
+    - 모듈이 들어있는 폴더명이 hailo_exporter 이고 다음 명령어를 폴더 밖에서 실행 
+```
+python -m hailo_exporter --port 9101
+```
