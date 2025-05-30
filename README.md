@@ -7,12 +7,22 @@
 ## 1. Raspberry pi 5 k8s installation
 - The installation was performed on Raspberry Pi OS
 
-## 2. understanding monitoring with hailo example 
+See [rpi_installation.md](https://github.com/jiiihwan/hailo_exporter/blob/main/rpi_installation.md) for more details
+
+## 2. Understanding monitoring with hailo example 
 - Using https://github.com/hailo-ai/hailo-rpi5-examples
 - https://datarootlabs.com/blog/hailo-ai-kit-raspberry-pi-5-setup-and-computer-vision-pipelines
 
+See [monitoring_example.md](https://github.com/jiiihwan/hailo_exporter/blob/main/monitoring_example.md) for more details
+
 ## 3. Prepare for Exporter
+
+See [prepare_for_exporter.md](https://github.com/jiiihwan/hailo_exporter/blob/main/prepare_hailo_exporter.md) for more details
 
 ## 4. Build Hailo_exporter
 
+See [build_hailo_exporter.md](https://github.com/jiiihwan/hailo_exporter/blob/main/build_hailo_exporter.md)
+
 ## 5. Automate Hailo_exporter in k8s cluster
+
+See [automate_hailo_exporter.md](https://github.com/jiiihwan/hailo_exporter/blob/main/automate_hailo_exporter.md)
