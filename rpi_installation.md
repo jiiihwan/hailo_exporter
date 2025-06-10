@@ -62,8 +62,14 @@ sudo raspi-config
 ### install libraries
 ```
 sudo apt install hailo-all
+```
+```
 sudo apt-get install gstreamer1.0-plugins-ugly
+```
+```
 sudo reboot
-#설치 확인
+```
+#### 설치 확인
+```
 hailortcli fw-control identify
 ```
