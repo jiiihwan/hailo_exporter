@@ -1,4 +1,4 @@
-# Raspberry pi installation in k8s
+# 🍓 Raspberry pi installation in k8s
 
 ### SSH settings
 
@@ -18,7 +18,7 @@ sudo systemctl start ssh
 sudo vim /boot/firmware/cmdline.txt
 ```
 
-- 열어서 이 내용 추가(공백으로 구분)
+#### 열어서 이 내용 추가(공백으로 구분)
 ```
 rootwait quiet splash cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1
 ```
@@ -33,7 +33,7 @@ sudo mkdir -p /etc/systemd/system/kubelet.service.d
 sudo vim /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 ```
 
-- 다음 내용 넣고 저장
+#### 다음 내용 넣고 저장
 ```
 Environment="KUBELET_CONFIG_ARGS=--config=/var/lib/kubelet/config.yaml --resolv-conf=/etc/resolv.conf"
 Environment="KUBELET_KUBEADM_ARGS=--bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf --kubeconfig=/etc/kubernetes/kubelet.conf"
@@ -48,7 +48,7 @@ sudo systemctl restart kubelet
 ```
 
 ### PCIe Gen 3.0 활성화
-- referred to the following link: https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#pcie-gen-3-0
+referred to the following link: https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#pcie-gen-3-0
 
 ```
 sudo raspi-config
