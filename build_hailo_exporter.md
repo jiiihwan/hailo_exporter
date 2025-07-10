@@ -26,7 +26,7 @@ hailo_exporter/                   # 최상위 폴더
 ## exporter 실행
 - 가상환경 세팅
 ```
-# (필요시) 원래 가상환경 삭제
+# (필요시) 원래 가상환경 삭제 및 설치
 deactivate
 rm -rf venv
 
@@ -44,8 +44,7 @@ python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-- exporter 모듈 실행해보기    
-    - 모듈이 들어있는 폴더명이 hailo_exporter 이고 다음 명령어를 폴더 밖에서 실행 
+- exporter 실행해보기    
 ```
-python -m hailo_exporter --port 9101
+python hailo_exporter --port 9102
 ```
