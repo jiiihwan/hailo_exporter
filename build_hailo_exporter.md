@@ -4,13 +4,8 @@
 hailo_exporter/                   # 최상위 폴더
 ├── Dockerfile                    # Docker 빌드 설정 파일
 ├── requirements.txt              # Python 의존성 목록
-└── hailo_exporter/               # Python 패키지 폴더
-    ├── __init__.py               # 패키지 초기화 파일
-    ├── __main__.py               # main 진입점
-    ├── exporter.py               # Prometheus exporter 관련 로직
-    ├── hailo_stats.py            # Hailo NPU 관련 데이터 수집 모듈
-    ├── logger.py                 # 로깅 설정 모듈
-    ├── scheduler_mon_pb2.py      # protobuf 컴파일 결과 (scheduler_mon.proto → pb2)
+├── hailo_exporter.py             # exporter 코드
+└──scheduler_mon_pb2.py           # protobuf 컴파일 결과 (scheduler_mon.proto → pb2)
 ```
 
 ## hailo_exporter module
