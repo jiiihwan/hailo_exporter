@@ -17,11 +17,13 @@ See [monitoring_example.md](https://github.com/jiiihwan/hailo_exporter/blob/main
 
 See [install.md](https://github.com/jiiihwan/hailo_exporter/blob/main/install.md) for more details
 
-## 📝 3. Prepare for Exporter
+## 🌱 4. Build and install from the beginning
+
+### 📝 4.1. Prepare for Exporter
 
 See [prepare_for_exporter.md](https://github.com/jiiihwan/hailo_exporter/blob/main/prepare_hailo_exporter.md) for more details
 
 
-## 5. 🐋 Automate Hailo_exporter in k8s cluster
+### 4.2. 🐋 Automate Hailo_exporter in k8s cluster
 
 See [automate_hailo_exporter.md](https://github.com/jiiihwan/hailo_exporter/blob/main/automate_hailo_exporter.md) for more details
