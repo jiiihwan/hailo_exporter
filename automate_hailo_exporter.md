@@ -1,20 +1,8 @@
 # Automate Hailo_exporter in k8s cluster
-- 폴더 구조 참고
-```
-hailo_exporter/                   # 최상위 폴더
-├── Dockerfile                    # Docker 빌드 설정 파일
-├── requirements.txt              # Python 의존성 목록
-└── hailo_exporter/               # Python 패키지 폴더
-    ├── __init__.py               # 패키지 초기화 파일
-    ├── __main__.py               # main 진입점
-    ├── exporter.py               # Prometheus exporter 관련 로직
-    ├── hailo_stats.py            # Hailo NPU 관련 데이터 수집 모듈
-    ├── logger.py                 # 로깅 설정 모듈
-    ├── scheduler_mon_pb2.py      # protobuf 컴파일 결과 (scheduler_mon.proto → pb2)
-```
+jetson exporter와 마찬가지로 daemonset을 이용한 자동배포 구현
 
 ## 1. 노드에 라벨 붙히기
-- rpi라는 라벨을 붙혀서 이 라벨을 기준으로 데몬셋이 pod를 배포한다
+device=rpi라는 라벨을 붙히고, 이 라벨을 기준으로 daemonset이 exporter pod를 배포한다
 
 ```bash
 #마스터노드에서
@@ -63,10 +51,10 @@ sudo nerdctl login
 
 #dockerfile 빌드
 cd ~/hailo_exporter/
-sudo nerdctl build -t yjh2353693/hailo-exporter:latest .
+sudo nerdctl build -t <your dockerhub> .
 
 #도커허브에 푸시
-sudo nerdctl push yjh2353693/hailo-exporter:latest
+sudo nerdctl push <your dockerhub>
 ```
 
 ## 4. k8s resource 파일 작성
