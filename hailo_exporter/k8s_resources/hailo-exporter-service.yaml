@@ -10,5 +10,5 @@ spec:
     app: hailo-exporter
   ports:
     - name: metrics
-      port: 9101
-      targetPort: 9101
+      port: 9102
+      targetPort: 9102
