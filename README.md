@@ -2,7 +2,7 @@
 > A Prometheus exporter for monitoring Hailo NPU usage on Raspberry Pi 5
 
 - This project is extension of [k8s dashboard](https://github.com/jiiihwan/k8s-dashboard)
-- exporter module architecture is based on [jetson-exporter](https://github.com/laminair/jetson_stats_node_exporter)
+- exporter module architecture is based on [jetson-exporter](https://github.com/jiiihwan/jetson_exporter)
 
 ## 🍓 1. Raspberry pi 5 k8s installation
 The installation was performed on Raspberry Pi OS
