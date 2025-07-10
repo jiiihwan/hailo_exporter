@@ -20,7 +20,7 @@
 ## hailortcli monitor의 진행 과정
 1. `scheduler_mon.proto` 에서 `ProtoMon` 메시지 구조 정의
 2. HailoRT 내부 스케줄러가 `.pb` 파일에 `ProtoMon` 메시지를 기록. 이때 기록되는 것은 HAILO_MONITOR=1 인 터미널의 경우만 기록됨.
-3. `mon_command.cpp`는 그 `.pb` 파일을 열고, `ProtoMon`으로 파싱한 뒤, 그 안에 있는 정보 (`device_infos`, `network_infos`, `net_frames_infos`)를 터미널에 출력함
+3. `hailortcli monitor`에 출력되는 정보를 표시하기 위해 사용되는 `mon_command.cpp`는 그 `.pb` 파일을 열고, `ProtoMon`으로 파싱한 뒤, 그 안에 있는 정보 (`device_infos`, `network_infos`, `net_frames_infos`)를 터미널에 출력함
 - 사용률은 이진파일(.pb)에 담겨있고, 이진파일을 해석하기 위한 것이 `scheduler_mon.proto`
 - 그래서 `scheduler_mon.proto` 를 파이썬에서 사용하기 위해 proto 파일을 다른언어로 변환해주는 컴파일러인 `protoc` 를 설치한다
 
