@@ -9,15 +9,19 @@ jetson exporter와 마찬가지로 daemonset을 이용한 자동배포 구현
 `device=rpi`라는 라벨을 붙히고, 이 라벨을 기준으로 `daemonset`이 exporter pod를 배포한다
 
 ```bash
-#마스터노드에서
 kubectl get nodes
+```
+마스터노드에서
 
-#라벨 device=rpi 붙히기
+```
 kubectl label node <node name> device=rpi
+```
+라벨 `device=rpi` 붙히기
 
-#라벨 확인
+```
 kubectl get nodes --show-labels
 ```
+라벨 확인
 
 ## 2. Dockerfile 생성
 ```
