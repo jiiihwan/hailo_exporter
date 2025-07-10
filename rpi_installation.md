@@ -26,7 +26,9 @@ rootwait quiet splash cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1
 sudo reboot
 ```
 
-### ✔️ rpi Not ready 문제 수정
+### ✔️ rpi join & Not ready 문제 수정
+kubelet이 TLS bootstrap을 하기 위해 bootstrap-kubelet.conf를 먼저 써야 하는데, systemd 설정에서 이걸 빼먹어서 무조건 kubelet.conf만 찾고 종료
+
 기본적으로 kubelet은 --resolv-conf 경로를 사용해 각 Pod에 DNS 설정을 넘겨주는데,
 라즈베리파이 (Debian Bookworm) 등에서는 /run/systemd/resolve/resolv.conf가 존재하지 않을 수 있음
 
