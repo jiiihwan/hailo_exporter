@@ -68,7 +68,7 @@ sudo nerdctl build -t <your dockerhub> .
 sudo nerdctl push <your dockerhub>
 ```
 
-## 5. k8s resource 파일 작성
+## 🔋 5. k8s resource 파일 작성
 ### 동작 방식
 - 라벨을 이용해서 daemonset, service, service monitor가 target을 찾을 수 있게 한다
 
