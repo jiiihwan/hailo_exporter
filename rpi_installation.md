@@ -26,19 +26,26 @@ rootwait quiet splash cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1
 sudo reboot
 ```
 
-### ✔️ pod 안올라가는 문제 수정
+### ✔️ rpi Not ready 문제 수정
+기본적으로 kubelet은 --resolv-conf 경로를 사용해 각 Pod에 DNS 설정을 넘겨주는데,
+라즈베리파이 (Debian Bookworm) 등에서는 /run/systemd/resolve/resolv.conf가 존재하지 않을 수 있음
+
+#### kubelet 설정에 올바른 DNS 경로 지정
 ```bash
 sudo mkdir -p /etc/systemd/system/kubelet.service.d
 sudo vim /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 ```
 
-#### 다음 내용 넣고 저장
 ```
 Environment="KUBELET_CONFIG_ARGS=--config=/var/lib/kubelet/config.yaml --resolv-conf=/etc/resolv.conf"
 Environment="KUBELET_KUBEADM_ARGS=--bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf --kubeconfig=/etc/kubernetes/kubelet.conf"
 ExecStart=
 ExecStart=/usr/bin/kubelet $KUBELET_CONFIG_ARGS $KUBELET_KUBEADM_ARGS $KUBELET_EXTRA_ARGS
 ```
+
+위 내용 넣고 저장
+
+#### systemd 재로드 및 kubelet 재시작
 
 ```
 sudo systemctl daemon-reexec
