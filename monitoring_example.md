@@ -3,7 +3,7 @@
   - https://github.com/hailo-ai/hailo-rpi5-examples
   - https://datarootlabs.com/blog/hailo-ai-kit-raspberry-pi-5-setup-and-computer-vision-pipelines
 
-### git clone & initial setting
+### ⚙️ git clone & initial setting
 ```
 git clone https://github.com/hailo-ai/hailo-rpi5-examples.git
 cd hailo-rpi5-examples
@@ -11,7 +11,7 @@ cd hailo-rpi5-examples
 ./download_resources.sh
 ```
 
-### Monitoring environmental settings
+### 🖥️ Monitoring environmental settings
 
 
 ```
@@ -33,12 +33,12 @@ export HAILO_MONITOR=1
 ```
 코드를 실행하는 터미널에서 입력해서 환경변수 설정
 
-### Example execution
+### ✔️ Example execution
 ```
 python basic_pipelines/detection.py --input resources/detection0.mp4
 ```
 
-### Monitoring NPU usage
+### 📈 Monitoring NPU usage
 - Open a new terminal and enter the following command 
 
 ```
