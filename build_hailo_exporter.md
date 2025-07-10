@@ -5,7 +5,7 @@ hailo_exporter/                   # 최상위 폴더
 ├── Dockerfile                    # Docker 빌드 설정 파일
 ├── requirements.txt              # Python 의존성 목록
 ├── hailo_exporter.py             # exporter 코드
-└──scheduler_mon_pb2.py           # protobuf 컴파일 결과 (scheduler_mon.proto → pb2)
+└── scheduler_mon_pb2.py          # protobuf 컴파일 결과 (scheduler_mon.proto → pb2)
 ```
 
 ## hailo_exporter module
