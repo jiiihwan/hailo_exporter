@@ -1,4 +1,4 @@
-# hailo_exporter
+# 🍓 hailo_exporter
 > A Prometheus exporter for monitoring Hailo NPU usage on Raspberry Pi 5
 
 - This project is extension of [k8s dashboard](https://github.com/jiiihwan/k8s-dashboard)
