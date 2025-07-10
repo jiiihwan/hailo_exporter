@@ -81,7 +81,9 @@ sudo nerdctl push <your dockerhub>
 
 ### Daemonset 
 /tmp/hmon_files를 마운트하는데, hailo model을 한번도 실행한 적이 없거나 일정시간이 지나면 존재하지 않는 휘발성 경로이므로 미리 생성해서 마운트한다.
+
 root권한으로 생성되므로 chmod 777로 권한부여했다.
+
 혹여나 권한 관련문제 때문에 바꾸고 싶으면 적절히 조정하면 된다.
 
 ```
