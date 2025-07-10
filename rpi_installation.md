@@ -13,8 +13,8 @@ sudo systemctl start ssh
 
 ### ⚙️ k8s settings
 
+이전 설정이랑 같은데 이거 추가
 ```bash
-#이전 설정이랑 같은데 이거 추가
 sudo vim /boot/firmware/cmdline.txt
 ```
 
