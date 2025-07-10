@@ -13,6 +13,10 @@ See [rpi_installation.md](https://github.com/jiiihwan/hailo_exporter/blob/main/r
 
 See [monitoring_example.md](https://github.com/jiiihwan/hailo_exporter/blob/main/monitoring_example.md) for more details
 
+## 🛠️ 3. Install hailo_exporter
+
+See [] for more details
+
 ## 📝 3. Prepare for Exporter
 
 See [prepare_for_exporter.md](https://github.com/jiiihwan/hailo_exporter/blob/main/prepare_hailo_exporter.md) for more details
