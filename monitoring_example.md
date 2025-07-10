@@ -12,12 +12,26 @@ cd hailo-rpi5-examples
 ```
 
 ### Monitoring environmental settings
+
+
 ```
 cd hailo-rpi5-examples
-source setup_env.sh #환경 세팅
-export DISPLAY=:0 #ssh로 연결했을때 gui출력이 없으므로 연결된 실제 모니터에 대신 출력
-export HAILO_MONITOR=1 #코드를 실행하는 터미널에서 입력해서 환경변수 설정
 ```
+
+```
+source setup_env.sh 
+```
+환경 세팅
+
+```
+export DISPLAY=:0 
+```
+ssh로 연결했을때 gui출력이 없으므로 연결된 실제 모니터에 대신 출력
+
+```
+export HAILO_MONITOR=1
+```
+코드를 실행하는 터미널에서 입력해서 환경변수 설정
 
 ### Example execution
 ```
@@ -28,6 +42,6 @@ python basic_pipelines/detection.py --input resources/detection0.mp4
 - Open a new terminal and enter the following command 
 
 ```
-hailortcli monitor #다른 터미널에서 입력
+hailortcli monitor 
 ```
 
