@@ -1,15 +1,26 @@
-# Building Hailo Exporter
-- 폴더 구조 참고
-```
-hailo_exporter/                   # 최상위 폴더
-├── Dockerfile                    # Docker 빌드 설정 파일
-├── requirements.txt              # Python 의존성 목록
-├── hailo_exporter.py             # exporter 코드
-└── scheduler_mon_pb2.py          # protobuf 컴파일 결과 (scheduler_mon.proto → pb2)
+# 🛠️ Install hailo_exporter
+설치만 하고자 한다면 아래의 과정을 따라하기만 하면 됨
+
+## 0. hailo_exporter 바로 설치
+### git clone
+마스터노드에서 입력
+```bash
+git clone https://github.com/jiiihwan/hailo_exporter
 ```
 
-## hailo_exporter
+### 모두 적용
+```bash
+cd hailo_exporter/k8s_resources
+```
 
+```bash
+kubectl apply -f hailo-exporter-daemonset.yaml
+kubectl apply -f hailo-exporter-service.yaml -n monitoring
+kubectl apply -f hailo-exporter-servicemonitor.yaml -n monitoring
+```
+
+
+## 설명
 ### `requirements.txt`
   - 프로젝트에서 사용하는 Python 패키지 목록
   - [requirements.txt](https://github.com/jiiihwan/hailo_exporter/blob/main/hailo_exporter/requirements.txt)
