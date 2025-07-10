@@ -1,6 +1,10 @@
 # Automate Hailo_exporter in k8s cluster
 jetson exporter와 마찬가지로 daemonset을 이용한 자동배포 구현
 
+9100포트는 node-exporter, 9102포트를 hailo-exporter로 사용
+
+jetson-exporter와 다른기기니 9101포트를 사용해도 무방함
+
 ## 1. 노드에 라벨 붙히기
 device=rpi라는 라벨을 붙히고, 이 라벨을 기준으로 daemonset이 exporter pod를 배포한다
 
