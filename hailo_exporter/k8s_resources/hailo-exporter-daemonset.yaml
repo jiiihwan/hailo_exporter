@@ -16,19 +16,28 @@ spec:
     spec:
       nodeSelector:
         device: rpi
+      initContainers:
+        - name: init-hmon-dir
+          image: busybox
+          command: ["/bin/sh", "-c"]
+          args:
+            - mkdir -p /tmp/hmon_files && chmod 777 /tmp/hmon_files
+          volumeMounts:
+            - name: hmon-volume
+              mountPath: /tmp/hmon_files
       containers:
         - name: hailo-exporter
           image: yjh2353693/hailo-exporter:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 9101
+            - containerPort: 9102
               name: metrics
           volumeMounts:
             - name: hmon-volume
               mountPath: /tmp/hmon_files
-              readOnly: true
+              readOnly: false
       volumes:
         - name: hmon-volume
           hostPath:
             path: /tmp/hmon_files
-            type: Directory
+            type: DirectoryOrCreate
