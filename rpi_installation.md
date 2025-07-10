@@ -12,8 +12,7 @@ sudo systemctl start ssh
 ```
 
 ### ⚙️ k8s settings
-
-이전 설정이랑 같은데 이거 추가
+join 안되는 문제 수정
 ```bash
 sudo vim /boot/firmware/cmdline.txt
 ```
