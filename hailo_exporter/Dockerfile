@@ -9,11 +9,12 @@ RUN apt-get update
 COPY requirements.txt .
 RUN pip3 install -r requirements.txt
 
-# hailo_exporter 모듈 전체 복사
-COPY hailo_exporter/ ./hailo_exporter/
+# 파이썬 소스 파일 복사
+COPY hailo_exporter.py .
+COPY scheduler_mon_pb2.py .
 
 # Prometheus가 수집할 포트 열기
-EXPOSE 9101
+EXPOSE 9102
 
 # 모듈로 실행
-ENTRYPOINT ["python", "-m", "hailo_exporter", "--port=9101"]
+ENTRYPOINT ["python", "hailo_exporter.py", "--port=9102"]
