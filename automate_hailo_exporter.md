@@ -5,7 +5,7 @@ jetson exporter와 마찬가지로 daemonset을 이용한 자동배포 구현
 
 `jetson-exporter`와 다른기기니 `9101`포트를 사용해도 무방함
 
-## 1. 노드에 라벨 붙히기
+## 🏷️ 1. 노드에 라벨 붙히기
 `device=rpi`라는 라벨을 붙히고, 이 라벨을 기준으로 `daemonset`이 exporter pod를 배포한다
 
 ```bash
@@ -23,7 +23,7 @@ kubectl get nodes --show-labels
 ```
 라벨 확인
 
-## 2. Dockerfile 생성
+## 📄 2. Dockerfile 생성
 
 ```
 vim Dockerfile
@@ -31,7 +31,7 @@ vim Dockerfile
 
 [Dockerfile](https://github.com/jiiihwan/hailo_exporter/blob/main/hailo_exporter/Dockerfile)
 
-## 3. nerdctl 및 buildkit 설치
+## 🛠️ 3. nerdctl 및 buildkit 설치
 - k8s가 docker가 아닌 containerd를 사용하고 있기 때문에 docker말고 nerdctl을 사용한다
 
 ```bash
@@ -55,7 +55,7 @@ nerdctl --version
 sudo nohup buildkitd > /dev/null 2>&1 &
 ```
 
-### 3. 이미지 build & push
+## 🐋 4. 이미지 build & push
 ```
 #Dockerhub login
 sudo nerdctl login
@@ -68,7 +68,7 @@ sudo nerdctl build -t <your dockerhub> .
 sudo nerdctl push <your dockerhub>
 ```
 
-## 4. k8s resource 파일 작성
+## 5. k8s resource 파일 작성
 ### 동작 방식
 - 라벨을 이용해서 daemonset, service, service monitor가 target을 찾을 수 있게 한다
 
@@ -79,7 +79,7 @@ sudo nerdctl push <your dockerhub>
 | `ServiceMonitor`    | `release: prometheus`                            | Prometheus가 ServiceMonitor 찾는 기준 |
 
 
-### Daemonset 
+### 5.1. Daemonset 
 /tmp/hmon_files를 마운트하는데, hailo model을 한번도 실행한 적이 없거나 일정시간이 지나면 존재하지 않는 휘발성 경로이므로 미리 생성해서 마운트한다.
 
 root권한으로 생성되므로 chmod 777로 권한부여했다. 혹여나 권한 관련문제 때문에 바꾸고 싶으면 적절히 조정하면 된다.
@@ -95,7 +95,7 @@ kubectl apply -f hailo-exporter-daemonset.yaml
 kubectl get pods -n monitoring -o wide
 ```
 
-### Service
+### 5.2. Service
 ```
 vim hailo-exporter-service.yaml
 ```
@@ -106,7 +106,7 @@ vim hailo-exporter-service.yaml
 kubectl apply -f hailo-exporter-service.yaml
 ```
 
-### Service Monitor
+### 5.3. Service Monitor
 `vim hailo-exporter-servicemonitor.yaml`
 
 [hailo-exporter-servicemonitor.yaml](https://github.com/jiiihwan/hailo_exporter/blob/main/hailo_exporter/k8s_resources/hailo-exporter-servicemonitor.yaml) for full code
