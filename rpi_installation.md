@@ -1,6 +1,6 @@
 # 🍓 Raspberry pi installation in k8s
 
-### SSH settings
+### ⚙️ SSH settings
 
 ```bash
 ifconfig
@@ -11,7 +11,7 @@ sudo systemctl enable ssh
 sudo systemctl start ssh
 ```
 
-### k8s settings
+### ⚙️ k8s settings
 
 ```bash
 #이전 설정이랑 같은데 이거 추가
@@ -27,7 +27,7 @@ rootwait quiet splash cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1
 sudo reboot
 ```
 
-### pod 안올라가는 문제 수정
+### ✔️ pod 안올라가는 문제 수정
 ```bash
 sudo mkdir -p /etc/systemd/system/kubelet.service.d
 sudo vim /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
@@ -47,7 +47,7 @@ sudo systemctl daemon-reload
 sudo systemctl restart kubelet
 ```
 
-### PCIe Gen 3.0 활성화
+### ✅ PCIe Gen 3.0 활성화
 referred to the following link: https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#pcie-gen-3-0
 
 ```
@@ -59,7 +59,7 @@ sudo raspi-config
 4. Select Finish to exit.
 5. Reboot your Raspberry Pi with sudo reboot for your changes to take effect.
 
-### install libraries
+### 🛠️ install libraries
 ```
 sudo apt install hailo-all
 ```
