@@ -20,7 +20,9 @@ kubectl get nodes --show-labels
 ```
 
 ## 2. Dockerfile 생성
-`vim Dockerfile`
+```
+vim Dockerfile
+```
 
 [Dockerfile](https://github.com/jiiihwan/hailo_exporter/blob/main/hailo_exporter/Dockerfile)
 
@@ -73,7 +75,9 @@ sudo nerdctl push <your dockerhub>
 
 
 ### Daemonset 
-`vim hailo-exporter-daemonset.yaml`
+```
+vim hailo-exporter-daemonset.yaml
+```
 
 See [hailo-exporter-daemonset.yaml](https://github.com/jiiihwan/hailo_exporter/blob/main/hailo_exporter/k8s_resources/hailo-exporter-daemonset.yaml) for full code
 
@@ -83,7 +87,9 @@ kubectl get pods -n monitoring -o wide
 ```
 
 ### Service
-`vim hailo-exporter-service.yaml`
+```
+vim hailo-exporter-service.yaml
+```
 
 [hailo-exporter-service.yaml](https://github.com/jiiihwan/hailo_exporter/blob/main/hailo_exporter/k8s_resources/hailo-exporter-service.yaml) for full code
 
