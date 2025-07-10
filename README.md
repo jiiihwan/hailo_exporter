@@ -15,7 +15,7 @@ See [monitoring_example.md](https://github.com/jiiihwan/hailo_exporter/blob/main
 
 ## 🛠️ 3. Install hailo_exporter
 
-See [] for more details
+See [install.md](https://github.com/jiiihwan/hailo_exporter/blob/main/install.md) for more details
 
 ## 📝 3. Prepare for Exporter
 
