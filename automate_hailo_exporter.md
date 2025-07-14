@@ -88,7 +88,7 @@ root권한으로 생성되므로 chmod 777로 권한부여했다. 혹여나 권�
 vim hailo-exporter-daemonset.yaml
 ```
 
-See [hailo-exporter-daemonset.yaml](https://github.com/jiiihwan/hailo_exporter/blob/main/hailo_exporter/k8s_resources/hailo-exporter-daemonset.yaml) for full code
+See [hailo-exporter-daemonset.yaml](https://github.com/jiiihwan/hailo_exporter/blob/main/k8s_resources/hailo-exporter-daemonset.yaml) for full code
 
 ```bash
 kubectl apply -f hailo-exporter-daemonset.yaml
@@ -100,7 +100,7 @@ kubectl get pods -n monitoring -o wide
 vim hailo-exporter-service.yaml
 ```
 
-[hailo-exporter-service.yaml](https://github.com/jiiihwan/hailo_exporter/blob/main/hailo_exporter/k8s_resources/hailo-exporter-service.yaml) for full code
+[hailo-exporter-service.yaml](https://github.com/jiiihwan/hailo_exporter/blob/main/k8s_resources/hailo-exporter-service.yaml) for full code
 
 ```
 kubectl apply -f hailo-exporter-service.yaml
@@ -109,7 +109,7 @@ kubectl apply -f hailo-exporter-service.yaml
 ### 5.3. Service Monitor
 `vim hailo-exporter-servicemonitor.yaml`
 
-[hailo-exporter-servicemonitor.yaml](https://github.com/jiiihwan/hailo_exporter/blob/main/hailo_exporter/k8s_resources/hailo-exporter-servicemonitor.yaml) for full code
+[hailo-exporter-servicemonitor.yaml](https://github.com/jiiihwan/hailo_exporter/blob/main/k8s_resources/hailo-exporter-servicemonitor.yaml) for full code
 
 ```
 kubectl apply -f hailo-exporter-servicemonitor.yaml
