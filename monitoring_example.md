@@ -35,7 +35,7 @@ export HAILO_MONITOR=1
 
 ### ✔️ Example execution
 ```
-python basic_pipelines/detection.py --input resources/detection0.mp4
+python basic_pipelines/detection.py
 ```
 
 ### 📈 Monitoring NPU usage
