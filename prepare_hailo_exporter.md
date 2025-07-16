@@ -1,6 +1,6 @@
 # 📝 Prepare for Exporter
 
-- `hailortlci monitor` 가 어떻게 동작하는지 파악하여 사용량 메트릭 정보만 추출하는 exporter를 만드는 것이 목표
+- `hailortcli monitor` 가 어떻게 동작하는지 파악하여 사용량 메트릭 정보만 추출하는 exporter를 만드는 것이 목표
 - referred to the following link:
   - https://github.com/hailo-ai/hailort/blob/master/hailort/hailortcli/mon_command.cpp
   - https://github.com/hailo-ai/hailort/blob/master/hailort/libhailort/scheduler_mon.proto
