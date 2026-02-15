@@ -6,6 +6,8 @@
 
 **Hailo Exporter** is an extension of the [k8s dashboard](https://github.com/jiiihwan/k8s-dashboard) and is based on the architecture of [jetson-exporter](https://github.com/jiiihwan/jetson_exporter).
 
+Instead of collecting data by executing the `hailortcli monitor` command as an external process, we developed a unique collection structure that analyzes the internal workings of HailoRT and parses binary files containing NPU utilization information in real-time. This reduces overhead and ensures stable performance optimized for the Prometheus environment.
+
 ---
 
 ## 📖 Introduction
