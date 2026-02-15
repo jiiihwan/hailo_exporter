@@ -1,83 +1,107 @@
-# 🍓 Raspberry pi installation in k8s
+# 🍓 Raspberry Pi 5 설정 가이드 (Setup Guide)
 
-### ⚙️ SSH settings
+[**English**](rpi_setup.en.md) | [**한국어**](rpi_setup.md)
+
+이 문서는 Kubernetes 환경에서 Hailo Exporter를 구동하기 위해 Raspberry Pi 5를 설정하는 방법을 설명합니다.
+
+---
+
+## 🛠️ 1. SSH 설정 (SSH Settings)
+라즈베리파이에 원격 접속하기 위해 SSH를 활성화합니다.
 
 ```bash
+# 네트워크 인터페이스 확인
 ifconfig
-sudo apt install net-tools
-ifconfig
+# net-tools가 없다면 설치: sudo apt install net-tools
+
+# OpenSSH Server 설치
 sudo apt-get install openssh-server
+
+# 서비스 활성화 및 시작
 sudo systemctl enable ssh
 sudo systemctl start ssh
 ```
 
-### ⚙️ k8s settings
-join 안되는 문제 수정
+---
+
+## ☸️ 2. Kubernetes 노드 설정 (K8s Settings)
+
+### 2.1 cmdline.txt 수정 (cgroup 활성화)
+K8s 노드로 참여(join)하기 위해 cgroup 설정을 추가해야 합니다.
+
 ```bash
 sudo vim /boot/firmware/cmdline.txt
 ```
 
-#### 열어서 이 내용 추가(공백으로 구분)
-```
+파일의 맨 끝에 다음 내용을 **공백으로 구분하여** 추가합니다 (줄바꿈 금지):
+```text
 rootwait quiet splash cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1
 ```
 
-```
+수정 후 재부팅합니다.
+```bash
 sudo reboot
 ```
 
-### ✔️ rpi join & Not ready 문제 수정
-kubelet이 TLS bootstrap을 하기 위해 bootstrap-kubelet.conf를 먼저 써야 하는데, systemd 설정에서 이걸 빼먹어서 무조건 kubelet.conf만 찾고 종료
+### 2.2 Kubelet DNS 설정 (NotReady 문제 해결)
+라즈베리파이(Debian Bookworm)에서 `kubelet`이 잘못된 `resolv.conf` 경로를 참조하여 노드가 `NotReady` 상태에 빠지거나 TLS 부트스트랩이 실패하는 문제를 해결합니다.
 
-기본적으로 kubelet은 --resolv-conf 경로를 사용해 각 Pod에 DNS 설정을 넘겨주는데,
-라즈베리파이 (Debian Bookworm) 등에서는 /run/systemd/resolve/resolv.conf가 존재하지 않을 수 있음
+1.  **Kubelet 서비스 설정 디렉토리 생성**
+    ```bash
+    sudo mkdir -p /etc/systemd/system/kubelet.service.d
+    ```
 
-#### kubelet 설정에 올바른 DNS 경로 지정
+2.  **설정 파일 작성**
+    ```bash
+    sudo vim /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+    ```
+    아래 내용을 붙여넣습니다.
+    ```ini
+    [Service]
+    Environment="KUBELET_CONFIG_ARGS=--config=/var/lib/kubelet/config.yaml --resolv-conf=/etc/resolv.conf"
+    Environment="KUBELET_KUBEADM_ARGS=--bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf --kubeconfig=/etc/kubernetes/kubelet.conf"
+    ExecStart=
+    ExecStart=/usr/bin/kubelet $KUBELET_CONFIG_ARGS $KUBELET_KUBEADM_ARGS $KUBELET_EXTRA_ARGS
+    ```
+
+3.  **서비스 재시작**
+    ```bash
+    sudo systemctl daemon-reexec
+    sudo systemctl daemon-reload
+    sudo systemctl restart kubelet
+    ```
+
+---
+
+## ⚡ 3. PCIe Gen 3.0 활성화 (PCIe Activation)
+Hailo NPU의 성능을 최대로 끌어내기 위해 PCIe Gen 3.0 모드를 활성화합니다.
+참고: [Raspberry Pi Documentation](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#pcie-gen-3-0)
+
 ```bash
-sudo mkdir -p /etc/systemd/system/kubelet.service.d
-sudo vim /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
-```
-
-```
-Environment="KUBELET_CONFIG_ARGS=--config=/var/lib/kubelet/config.yaml --resolv-conf=/etc/resolv.conf"
-Environment="KUBELET_KUBEADM_ARGS=--bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf --kubeconfig=/etc/kubernetes/kubelet.conf"
-ExecStart=
-ExecStart=/usr/bin/kubelet $KUBELET_CONFIG_ARGS $KUBELET_KUBEADM_ARGS $KUBELET_EXTRA_ARGS
-```
-
-위 내용 넣고 저장
-
-#### systemd 재로드 및 kubelet 재시작
-
-```
-sudo systemctl daemon-reexec
-sudo systemctl daemon-reload
-sudo systemctl restart kubelet
-```
-
-### ✅ PCIe Gen 3.0 활성화
-referred to the following link: https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#pcie-gen-3-0
-
-```
 sudo raspi-config
 ```
-1. Select Advanced Options.
-2. Select PCIe Speed.
-3. Choose Yes to enable PCIe Gen 3 mode.
-4. Select Finish to exit.
-5. Reboot your Raspberry Pi with sudo reboot for your changes to take effect.
+1.  **Advanced Options** 선택
+2.  **PCIe Speed** 선택
+3.  **Yes**를 선택하여 PCIe Gen 3 mode 활성화
+4.  **Finish**를 눌러 종료 및 재부팅 (`sudo reboot`)
 
-### 🛠️ install libraries
-```
+---
+
+## 📦 4. 필수 라이브러리 설치 (Install Libraries)
+Hailo NPU를 사용하기 위한 드라이버와 라이브러리를 설치합니다.
+
+```bash
+# Hailo 전체 패키지 설치
 sudo apt install hailo-all
-```
-```
+
+# GStreamer 플러그인 설치 (예제 실행용)
 sudo apt-get install gstreamer1.0-plugins-ugly
-```
-```
+
+# 적용을 위해 재부팅
 sudo reboot
 ```
-#### 설치 확인
-```
+
+설치가 완료되면 펌웨어 정보를 확인하여 정상 작동을 검증합니다.
+```bash
 hailortcli fw-control identify
 ```

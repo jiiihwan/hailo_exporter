@@ -1,5 +1,7 @@
 # 🧠 Hailo Exporter Internal Details
 
+[**English**](internal_details.en.md) | [**한국어**](internal_details.md)
+
 이 문서는 **Hailo Exporter** 개발을 위해 분석된 `hailortcli monitor`의 동작 원리와 Protobuf 데이터 구조에 대해 설명합니다.
 
 ## 🎯 목표
