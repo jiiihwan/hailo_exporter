@@ -2,9 +2,13 @@
 
 [**English**](README.en.md) | [**한국어**](README.md)
 
-> Kubernetes 환경의 Raspberry Pi 5에서 Hailo NPU 사용량을 모니터링하기 위한 Prometheus Exporter입니다.
+> Kubernetes 환경의 Raspberry Pi 5에서 Hailo NPU 사용량을 모니터링하기 위한 Prometheus Exporter
 
-**Hailo Exporter**는 [k8s dashboard](https://github.com/jiiihwan/k8s-dashboard)의 확장 기능으로, [jetson-exporter](https://github.com/jiiihwan/jetson_exporter)의 아키텍처를 기반으로 제작되었습니다.
+**Hailo Exporter**는 [k8s dashboard](https://github.com/jiiihwan/k8s-dashboard)프로젝트의 확장 기능으로, [jetson-exporter](https://github.com/jiiihwan/jetson_exporter)의 아키텍처를 기반으로 제작되었습니다.
+
+기존의 `hailortcli monitor` 명령어를 외부 프로세스로 실행하여 데이터를 수집하는 방식 대신, HailoRT의 내부 동작 방식을 분석하여 NPU 사용률 정보가 담긴 바이너리 파일을 실시간으로 파싱하는 독자적인 수집 구조를 개발했습니다. 이를 통해 오버헤드를 낮추고 Prometheus 환경에 최적화된 안정적인 성능을 보장합니다.
+
+
 
 ---
 
