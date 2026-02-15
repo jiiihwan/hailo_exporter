@@ -71,7 +71,7 @@ sudo nerdctl push <your-dockerhub-id>/hailo_exporter:latest
 
 ## 📦 Manual Protobuf Compilation (Optional)
 **Note**: The repository already includes the compiled `scheduler_mon_pb2.py` file, so this step is usually not necessary.
-For underlying principles or details, refer to the [**Internal Details**](docs/internal_details.md) document.
+For underlying principles or details, refer to the [**Internal Details**](docs/internal_details.en.md) document.
 
 If `scheduler_mon.proto` is updated and needs recompilation:
 

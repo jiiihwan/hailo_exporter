@@ -17,7 +17,7 @@ This exporter collects real-time **Hailo-8 / Hailo-8L NPU** utilization metrics 
 2.  **Data Extraction**: Parses the binary using Google Protocol Buffers (`scheduler_mon.proto`) to extract NPU utilization.
 3.  **Prometheus Export**: Converts the extracted data into the `hailo_NPU_utilization` metric and exposes it via an HTTP server (default port 9102).
 
-> For more technical details, please refer to the [**Internal Details**](docs/internal_details.md) document.
+> For more technical details, please refer to the [**Internal Details**](docs/internal_details.en.md) document.
 
 ### Collected Metrics
 - `hailo_NPU_utilization`: Current utilization of the Hailo NPU (%)
@@ -28,7 +28,7 @@ This exporter collects real-time **Hailo-8 / Hailo-8L NPU** utilization metrics 
 
 ### 1. Prerequisites
 This project assumes a **Raspberry Pi 5** running in a **Kubernetes** environment.
-If you haven't set up your environment yet, please follow the [**Raspberry Pi 5 Setup Guide**](docs/rpi_setup.md) first.
+If you haven't set up your environment yet, please follow the [**Raspberry Pi 5 Setup Guide**](docs/rpi_setup.en.md) first.
 
 - Enable PCIe Gen 3.0
 - Install Hailo libraries and drivers (`hailo-all`)
@@ -73,4 +73,4 @@ kubectl apply -f hailo-exporter-servicemonitor.yaml -n monitoring
 ## 📊 Verification
 
 Once installed, you can generate load on the NPU to verify that metrics are being collected.
-Refer to the [**Monitoring Example Guide**](docs/monitoring_example.md) for instructions on generating NPU load and checking metrics.
+Refer to the [**Monitoring Example Guide**](docs/monitoring_example.en.md) for instructions on generating NPU load and checking metrics.
