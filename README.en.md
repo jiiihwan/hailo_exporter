@@ -8,7 +8,11 @@
 
 ### 💡 Technical Highlights
 
-Instead of collecting data by executing the `hailortcli monitor` command as an external process, we developed a unique collection structure that analyzes the internal workings of HailoRT and parses binary files containing NPU utilization information in real-time. This reduces overhead and ensures stable performance optimized for the Prometheus environment.
+> [!NOTE]
+> **"High-Performance Monitoring via Direct Binary Parsing"**
+>
+> Unlike traditional methods that collect data by spawning `hailortcli monitor` as an external process—which can be resource-heavy and unstable—**Hailo Exporter** employs a unique architecture.
+> It directly parses the **binary files containing NPU utilization info** in real-time by analyzing HailoRT's internal behavior. This approach **minimizes system overhead** and guarantees **stable, uninterrupted data collection** optimized for Prometheus.
 
 ---
 
